@@ -13,8 +13,16 @@ connectDB().then(() => {
 
 app.use(cors());
 
+app.get('/', (req, res) => {
+  res.send('Hello World!');
+});
+
+
 app.use("/data", dataRoute);
 
 app.listen(process.env.PORT, () => {
   console.log("Server is running on port 4000");
 });
+
+
+module.exports = app;
