@@ -1,6 +1,7 @@
 const express = require("express");
 const app = express();
 require("dotenv").config();
+const bodyParser = require("body-parser");
 
 const connectDB = require("./config/db");
 const cors = require("cors");
@@ -14,9 +15,11 @@ connectDB().then(() => {
 app.use(cors());
 
 app.get('/', (req, res) => {
-  res.send('Hello World!');
+  res.send('Yay!! Backend is running for Blackcoffer Assignment');
 });
 
+app.use(bodyParser.json()); 
+app.use(bodyParser.urlencoded({ extended: true }));
 
 app.use("/data", dataRoute);
 
