@@ -1,5 +1,6 @@
 const express = require("express");
 const app = express();
+require("dotenv").config();
 
 const connectDB = require("./config/db");
 const cors = require("cors");
@@ -14,6 +15,6 @@ app.use(cors());
 
 app.use("/data", dataRoute);
 
-app.listen(4000, () => {
+app.listen(process.env.PORT, () => {
   console.log("Server is running on port 4000");
 });

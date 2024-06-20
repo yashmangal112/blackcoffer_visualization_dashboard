@@ -11,8 +11,10 @@ const App = () => {
   useEffect(() => {
     const getData = async () => {
       try {
-        const response = await axios.get("http://localhost:4000/data");
+        const url = process.env.REACT_APP_BACKEND_URL;
+        const response = await axios.get(`${url}/data`);
         setData(response.data);
+        localStorage.setItem("data", JSON.stringify(response.data));
       } catch (error) {
         console.error("Error fetching data:", error);
       }
